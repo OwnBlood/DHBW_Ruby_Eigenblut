@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Artikels</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Text</th>
+      <th>Datum</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @artikels.each do |artikel| %>
+      <tr>
+        <td><%= artikel.name %></td>
+        <td><%= artikel.text %></td>
+        <td><%= artikel.datum %></td>
+        <td><%= link_to 'Show', artikel %></td>
+        <td><%= link_to 'Edit', edit_artikel_path(artikel) %></td>
+        <td><%= link_to 'Destroy', artikel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Artikel', new_artikel_path %>
