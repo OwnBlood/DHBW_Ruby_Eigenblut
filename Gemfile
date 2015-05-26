@@ -25,6 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'twitter-bootstrap-rails'
 gem 'simplecov'
+gem 'analytics-ruby', '~> 2.0.0', :require => 'segment/analytics'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
