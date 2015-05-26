@@ -18,7 +18,7 @@ class ArtikelsControllerTest < ActionController::TestCase
 
   test "should create artikel" do
     assert_difference('Artikel.count') do
-      post :create, artikel: { datum: @artikel.datum, name: @artikel.name, text: @artikel.text }
+      post :create, artikel: { datum: @artikel.datum, name: @artikel.name + "asdf", text: @artikel.text }
     end
 
     assert_redirected_to artikel_path(assigns(:artikel))
@@ -35,7 +35,7 @@ class ArtikelsControllerTest < ActionController::TestCase
   end
 
   test "should update artikel" do
-    patch :update, id: @artikel, artikel: { datum: @artikel.datum, name: @artikel.name, text: @artikel.text }
+    patch :update, id: @artikel, artikel: { datum: @artikel.datum, name: @artikel.name + "asdf", text: @artikel.text }
     assert_redirected_to artikel_path(assigns(:artikel))
   end
 
@@ -46,4 +46,22 @@ class ArtikelsControllerTest < ActionController::TestCase
 
     assert_redirected_to artikels_path
   end
+
+  test 'should only show all artikels in index' do
+    get :index
+    assert_select "span" do
+      assert_select "div", count: Artikel.all.count
+    end
+  end
+
+  test "index looks nice" do
+    get :index
+    assert_select 'span div' do
+      Artikel.all.each do |artikel|
+        assert_select '.jumbotron > h1', artikel.name
+      end
+    end
+  end
+
+
 end

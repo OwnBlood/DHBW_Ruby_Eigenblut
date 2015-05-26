@@ -4,7 +4,8 @@
 </div>
 
     <% @artikels.each do |artikel| %>
-        <div class="jumbotron">
+      <span>
+         <div class="jumbotron">
           <h1><%= artikel.name %></h1>
 
             <% artikel.themas.each do |t| %>
@@ -15,4 +16,5 @@
           <p><%= artikel.text %></p>
           <p><%= artikel.datum %></p>
         </div>
+       </span>
     <% end %>

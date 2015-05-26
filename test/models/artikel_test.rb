@@ -1,7 +1,9 @@
 require 'test_helper'
 
 class ArtikelTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "artikel name must be uniqe" do
+    assert_raise ActiveRecord::RecordInvalid do
+      Artikel.create! name: artikels(:one).name
+    end
+  end
 end

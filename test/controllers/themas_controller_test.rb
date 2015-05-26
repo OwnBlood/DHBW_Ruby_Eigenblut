@@ -18,11 +18,13 @@ class ThemasControllerTest < ActionController::TestCase
 
   test "should create thema" do
     assert_difference('Thema.count') do
-      post :create, thema: { name: @thema.name }
+      post :create, thema: { name: @thema.name  + "a"}
     end
 
     assert_redirected_to thema_path(assigns(:thema))
   end
+
+
 
   test "should show thema" do
     get :show, id: @thema
@@ -35,7 +37,7 @@ class ThemasControllerTest < ActionController::TestCase
   end
 
   test "should update thema" do
-    patch :update, id: @thema, thema: { name: @thema.name }
+    patch :update, id: @thema, thema: { name: @thema.name + "a"}
     assert_redirected_to thema_path(assigns(:thema))
   end
 

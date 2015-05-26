@@ -3,6 +3,7 @@ class Artikel < ActiveRecord::Base
   has_and_belongs_to_many :themas
 
   validates_presence_of :datum
+  validates_uniqueness_of :name
 
   default_scope { sortByDate }
 
