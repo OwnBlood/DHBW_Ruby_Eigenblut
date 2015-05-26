@@ -15,6 +15,23 @@
     </div>
   <% end %>
 
+    <div class="control-group">
+      <%= f.label :thema, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.collection_check_boxes :thema_ids, Thema.all, :id, :name, :class => 'form-control' %>
+      </div>
+      <%= error_span(@artikel[:thema_ids]) %>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :autor, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.select :autor, Autor.all.collect { |a| [a.name, a.id]},  :class => 'form-control'%>
+      </div>
+      <%= error_span(@artikel[:autor]) %>
+    </div>
+
+
   <div class="control-group">
     <%= f.label :name, :class => 'control-label' %>
     <div class="controls">
@@ -29,13 +46,7 @@
     </div>
     <%= error_span(@artikel[:text]) %>
   </div>
-  <div class="control-group">
-    <%= f.label :datum, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :datum, :class => 'form-control' %>
-    </div>
-    <%= error_span(@artikel[:datum]) %>
-  </div>
+
 
 
   <%= f.submit nil, :class => 'btn btn-primary' %>
