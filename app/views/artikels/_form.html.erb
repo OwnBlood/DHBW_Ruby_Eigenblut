@@ -1,29 +1,45 @@
-<%= form_for(@artikel) do |f| %>
-  <% if @artikel.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@artikel.errors.count, "error") %> prohibited this artikel from being saved:</h2>
+<%= form_for @artikel, :html => { :class => "form-horizontal artikel" } do |f| %>
 
-      <ul>
-      <% @artikel.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <% if @artikel.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@artikel.errors.count, "error") %> prohibited this artikel from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @artikel.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
+    <%= error_span(@artikel[:name]) %>
   </div>
-  <div class="field">
-    <%= f.label :text %><br>
-    <%= f.text_area :text %>
+  <div class="control-group">
+    <%= f.label :text, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :text, :class => 'form-control' %>
+    </div>
+    <%= error_span(@artikel[:text]) %>
   </div>
-  <div class="field">
-    <%= f.label :datum %><br>
-    <%= f.datetime_select :datum %>
+  <div class="control-group">
+    <%= f.label :datum, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :datum, :class => 'form-control' %>
+    </div>
+    <%= error_span(@artikel[:datum]) %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            artikels_path, :class => 'btn btn-default' %>
+
 <% end %>
