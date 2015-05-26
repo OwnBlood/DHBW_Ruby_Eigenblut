@@ -29,6 +29,12 @@ class ArtikelsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "shouldn't create artikel" do
+    assert_no_difference('Artikel.count') do
+      post :create, artikel: { name: ""}
+    end
+  end
+
   test "should get edit" do
     get :edit, id: @artikel
     assert_response :success
@@ -54,6 +60,19 @@ class ArtikelsControllerTest < ActionController::TestCase
     end
   end
 
+  test "artikel name can't be blank " do
+    post :update, id: @artikel, artikel: {name: ""}
+    assert_response :ok
+    assert_select '#error_expl ul' do
+      assert_select 'li', "Name can't be blank"
+    end
+  end
+
+  test 'looks nice submit button is only primary btn' do
+    get :new
+    assert_select '.btn-primary', 1
+  end
+
   test "index looks nice" do
     get :index
     assert_select 'span div' do
@@ -64,4 +83,4 @@ class ArtikelsControllerTest < ActionController::TestCase
   end
 
 
-end
+  end

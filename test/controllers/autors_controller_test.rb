@@ -18,6 +18,21 @@ class AutorsControllerTest < ActionController::TestCase
     end
   end
 
+  test 'looks nice as table' do
+    get :index
+    assert_select "thead"
+  end
+
+  test 'looks nice submit button is only primary btn' do
+    get :new
+    assert_select '.btn-primary', 1
+  end
+
+  test 'has form' do
+    get :new
+    assert_select "form"
+  end
+
 
 
   test "should get new" do

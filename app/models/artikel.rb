@@ -4,6 +4,7 @@ class Artikel < ActiveRecord::Base
 
   validates_presence_of :datum
   validates_uniqueness_of :name
+  validates_presence_of :name
 
   default_scope { sortByDate }
 

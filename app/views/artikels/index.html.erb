@@ -8,13 +8,14 @@
          <div class="jumbotron">
           <h1><%= artikel.name %></h1>
 
+           <p>Themen: </p>
             <% artikel.themas.each do |t| %>
               <p><%= t.name %></p>
 
             <% end %>
 
           <p><%= artikel.text %></p>
-          <p><%= artikel.datum %></p>
+          <p>Erstellt am: <%= artikel.datum %></p>
         </div>
        </span>
     <% end %>

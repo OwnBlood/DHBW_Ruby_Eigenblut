@@ -12,4 +12,7 @@ class ArtikelTest < ActiveSupport::TestCase
     end
   end
 
-end
+  test "artikel are sorted" do
+      Artikel.sortByDate == Artikel.all.order(datum: :desc)
+    end
+  end

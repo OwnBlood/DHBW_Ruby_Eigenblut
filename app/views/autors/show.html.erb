@@ -8,8 +8,6 @@
   <dd><%= @autor.name %></dd>
 </dl>
 
-<%= link_to t('.back', :default => t("helpers.links.back")),
-              autors_path, :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_autor_path(@autor), :class => 'btn btn-default' %>
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),

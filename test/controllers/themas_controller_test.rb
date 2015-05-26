@@ -24,6 +24,17 @@ class ThemasControllerTest < ActionController::TestCase
     assert_redirected_to thema_path(assigns(:thema))
   end
 
+  test "shouldn't create thema" do
+    assert_no_difference('Thema.count') do
+      post :create, thema: { name: ""}
+    end
+  end
+
+  test 'looks nice submit button is only primary btn' do
+    get :new
+    assert_select '.btn-primary', 1
+  end
+
   test 'should show all themas in index' do
     get :index
     assert_select "tbody" do
