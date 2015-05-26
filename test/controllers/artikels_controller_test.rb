@@ -47,7 +47,7 @@ class ArtikelsControllerTest < ActionController::TestCase
     assert_redirected_to artikels_path
   end
 
-  test 'should only show all artikels in index' do
+  test 'should show all artikels in index' do
     get :index
     assert_select "span" do
       assert_select "div", count: Artikel.all.count

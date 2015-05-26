@@ -11,6 +11,15 @@ class AutorsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:autors)
   end
 
+  test 'should show all autors in index' do
+    get :index
+    assert_select "tbody" do
+      assert_select "tr", count: Autor.all.count
+    end
+  end
+
+
+
   test "should get new" do
     get :new
     assert_response :success

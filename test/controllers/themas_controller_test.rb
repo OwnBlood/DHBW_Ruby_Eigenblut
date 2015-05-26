@@ -24,7 +24,12 @@ class ThemasControllerTest < ActionController::TestCase
     assert_redirected_to thema_path(assigns(:thema))
   end
 
-
+  test 'should show all themas in index' do
+    get :index
+    assert_select "tbody" do
+      assert_select "tr", count: Thema.all.count
+    end
+  end
 
   test "should show thema" do
     get :show, id: @thema
